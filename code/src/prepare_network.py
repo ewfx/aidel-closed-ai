@@ -1,8 +1,9 @@
 from neo4j import GraphDatabase
+import os
 
 db_uri = "bolt://localhost:7687"
 db_user = "neo4j"
-db_password = "password"
+db_password = os.environ.get('NEO4J_RISK_DB_PASSWORD')
 driver = GraphDatabase.driver(db_uri, auth=(db_user, db_password))
 
 

@@ -91,11 +91,7 @@ def compute_risk_score_with_details(driver, entity_name, entity_type):
                 weight = BASE_WEIGHTS.get(rel, 1)  # Default weight = 1
                 adjusted_weight = weight / (depth + 1)  # Reduce impact as depth increases
                 risk_score += adjusted_weight
-            relationships_summary.append(f"""Entity: {connected_entity} 
-                                        Label: {label} 
-                                        Source: {source}
-                                        Relationship Path: {relationships}
-                                        Depth: {depth}""")
+            relationships_summary.append(f"""Entity: {connected_entity} Source: {source} Depth: {depth}""")
 
     # Normalize risk score
     max_risk_score = sum(BASE_WEIGHTS.values()) * 5 # Max depth = 5 (assuming > 5 means a layered network)

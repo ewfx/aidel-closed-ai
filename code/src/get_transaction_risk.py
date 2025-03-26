@@ -88,9 +88,10 @@ def compute_transaction_risk(driver, model, extracted_entities):
             "confidence_score": float(entity["confidence_score"])
         })
         entity_risks[entity["name"]] = {
+            "type": entity["type"],
             "network_entity": entity["matched_name"],
             "network_risk": risk_score,
-            "network_relationships_summary": relationships_summary,
+            "network_relationships_summary": relationships_summary[:5],
             "network_confidence": float(entity["confidence_score"])
         }
 
@@ -126,13 +127,16 @@ def compute_transaction_risk(driver, model, extracted_entities):
     transaction_risk = {
         "risk_score": max(list(overall_risk_scores.values())),
         "entities": [],
+        "entity_types": [],
         "confidence_score": sum(list(overall_confidence_score.values())) / len(list(overall_confidence_score.values())),
+        "supporting_evidence": ["Offshore Leaks Database", "OFAC Sanctions List", "Entity wikipedia page"],
         "network_results": network_risk_results,
         "ofac_results": ofac_risk_results,
         "wiki_results": wiki_results
     }
     for entity, risk_data in entity_risks.items():
         transaction_risk["entities"].append(entity)
+        transaction_risk["entity_types"].append(risk_data["type"])
         # transaction_risk["risk_data"][entity] = risk_data
 
     print(json.dumps(transaction_risk, indent=4))

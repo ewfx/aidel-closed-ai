@@ -23,7 +23,6 @@ def find_best_match(model, entity_name, ofac_df, top_n=3, threshold=0.75):
     matches = []
     for idx in top_indices:
         match_name = ofac_df.iloc[idx]["Name"]
-        print(match_name)
         match_score = similarities[idx]
         match_data = ofac_df.iloc[[idx]]  # Keep as DataFrame
         if(similarities[idx] > threshold):
