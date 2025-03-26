@@ -1,0 +1,34 @@
+[
+    {
+        "role": "user",
+        "content": "I will be passing you few transaction related details which might be structured or unstructured."
+    },
+    {
+        "role": "system",
+        "content": "Sure! How can I help you with the data? What type of analysis are you expecting me to run on the given data?"
+    },
+    {
+        "role": "user",
+        "content": "Try to break down the input into multiple transactions which will further be broken down as required. Here is an example for unstructured input:\n\nTransaction ID: TXN9837421ABC\nDate: March 20, 2025\nTime: 14:35:22 GMT\nLocation: New York, USA\n\nEntities Involved:\nSender: John Doe (Account: ****5678) – Chase Bank\nReceiver: Emma Smith (Account: ****1234) – Wells Fargo\n\nTransaction Type: Online Payment\nAmount: $250.00 USD\nPurpose: Purchase of Electronics (Wireless Earbuds)\nMerchant: Best Buy\nOrder ID: BB-ORD-5478392\nPayment Method: Credit Card (Visa - ****9012)\n\nStatus: Completed & Verified\nSecurity Check: 2FA Authentication Passed\nAdditional Notes: No disputes or chargebacks reported\n\nAlex sent 1000 dollars to Lewis."
+    },
+    {
+        "role": "system",
+        "content": "Here is the output for the provided transactions:\n\n***Transaction 1***\nTransaction ID: TXN9837421ABC\nDate: March 20, 2025\nTime: 14:35:22 GMT\nLocation: New York, USA\n\nEntities Involved:\nSender: John Doe (Account: ****5678) – Chase Bank\nReceiver: Monaco Ice Creams (Account: ****1234) – Wells Fargo\n\nTransaction Type: Online Payment\nAmount: $250.00 USD\nPurpose: Purchase of Ice Creams\nMerchant: Online\nOrder ID: BB-ORD-5478392\nPayment Method: Credit Card (Visa - ****9012)\n\nStatus: Completed & Verified\nSecurity Check: 2FA Authentication Passed\nAdditional Notes: No disputes or chargebacks reported. Transaction approved by Mary Hussan.\n\n***Transaction 2***\nAlex sent 1000 dollars to Lewis from Tirupati.\n\nDid I identify it correctly as expected by you?"
+    },
+    {
+        "role": "user",
+        "content": "Yes, this is what I expected from you, but make sure that transactions can come in any different format."
+    },
+    {
+        "role": "system",
+        "content": "Sure, I will take care of it!"
+    },
+    {
+        "role": "user",
+        "content": "Help me with extracting the entities and recognizing their types, such as Company, Private Limited, NGO, Automobile Company, Electronics Company, and other possible types.\nConsider extracting the entities from other information fields and additional reasons provided in the transaction. Identify the type of currency and add its symbol in front of the amount.\nDifferentiate professions from names and consider them as entities with type 'Profession'.\nDo not consider place names as entities.\nIf you find any notes or hints from transaction in the transaction add it to the json that you think it will help to find transaction anomaly.\nProvide the output in the following format:\n\n[{\"Transaction ID\": <Transaction ID>,\"Amount\": <Amount number and currency type>,\"Notes\":<Information that will be helpful for next processes | No Addon Information>,\"Entity\":[{\"Name\":<Name of the entity in the transaction>,\"Type\":<Type of the entity>, \"Place\":<Place related to the entity | \"No location found\">}]}]\n\nThe output should only contain the list in the format mentioned above. Strictly no additional information generation is allowed."
+    },
+    {
+        "role": "system",
+        "content": "[{\"Transaction ID\": \"TXN9837421ABC\",\"Amount\": \"$250.00\",\"Notes\": \"No disputes or chargebacks reported. Trasaction approved by Mary Hussan\n 2FA Authentication Passed\"},\"Entity\":[{\"Name\":\"John Doe\",\"Type\":\"Person\",\"Place\":\"New York, USA\"},{\"Name\":\"Monaco Ice Creams\",\"Type\":\"Pvt Company\",\"Place\":\"No location found\"},{\"Name\":\"Mary Hassan\",\"Type\":\"Person\",\"Place\":\"No location found\"}]},\n{\"Transaction ID\": \"No ID found\",\"Amount\": \"$1000\",\"Entity\":[{\"Name\":\"Alex\",\"Type\":\"Person\",\"Place\":\"Tirupati\"},{\"Name\":\"Lewis\",\"Type\":\"Person\",\"Place\":\"No location found\"}],\"Notes\":\"No Addon Information\"}]"
+    }
+]
