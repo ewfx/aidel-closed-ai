@@ -9,8 +9,8 @@ BACKEND_URL = "http://127.0.0.1:8000/upload"  # FastAPI backend URL
 # Custom styled title
 st.markdown(
     """
-    <h1 style='text-align: center; color: #0077b6; font-size: 36px; font-weight: bold;'>
-        Fraud Detection System
+    <h1 style='text-align: center; color: #0077b6; font-size: 32px; font-weight: bold;'>
+        AI Driven Entity Intelligence & Risk Analysis
     </h1>
     """,
     unsafe_allow_html=True

@@ -1,0 +1,4 @@
+Transaction ID,Payer Name,Receiver Name,Transaction Details,Amount ,Receiver country
+TXN001,Acme corp,SovCo Capital Partners,Payment for services rendered,"$500,000 ",USA
+TXN002,Global Health Foundation,Save the Children,Grant disbursement,"$2,000,000 ",UK
+

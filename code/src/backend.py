@@ -1,7 +1,8 @@
 from fastapi import FastAPI, File, UploadFile
 from typing import List
 import uvicorn
-from entity_extractor import chat_agent, start
+from entity_extractor import start
+from search_agent import chat_agent
 from neo4j import GraphDatabase
 from sentence_transformers import SentenceTransformer
 from groq import Groq
